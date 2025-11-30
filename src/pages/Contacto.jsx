@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { Send } from 'lucide-react';
+import { Send, Loader2 } from 'lucide-react';
+import { db } from '../firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 const Contacto = () => {
     const { t } = useLanguage();
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
         surname: '',
@@ -19,10 +22,31 @@ const Contacto = () => {
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
-        alert('Formulario enviado (simulación)');
+        setIsSubmitting(true);
+
+        try {
+            await addDoc(collection(db, "contacts"), {
+                ...formData,
+                createdAt: serverTimestamp()
+            });
+            alert('Mensaje enviado correctamente. Nos pondremos en contacto contigo pronto.');
+            setFormData({
+                name: '',
+                surname: '',
+                phone: '',
+                email: '',
+                address: '',
+                dining: 'no',
+                childrenCount: '1'
+            });
+        } catch (error) {
+            console.error("Error adding document: ", error);
+            alert('Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -138,8 +162,8 @@ const Contacto = () => {
                         )}
                     </div>
 
-                    <button type="submit" className="btn btn-primary w-full flex items-center justify-center gap-2 text-lg">
-                        <Send size={20} />
+                    <button type="submit" disabled={isSubmitting} className="btn btn-primary w-full flex items-center justify-center gap-2 text-lg disabled:opacity-70">
+                        {isSubmitting ? <Loader2 className="animate-spin" size={20} /> : <Send size={20} />}
                         {t('contact.send')}
                     </button>
                 </form>
