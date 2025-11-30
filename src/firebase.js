@@ -5,12 +5,13 @@ import { getFirestore } from "firebase/firestore";
 // TODO: Replace with your Firebase project configuration
 // You can find these in Project Settings > General > Your apps in the Firebase Console
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
+    apiKey: "AIzaSyDSwdLb2U39QYwBJxhHk9362mmfWA4sEho",
     authDomain: "escuela-mendigorria.firebaseapp.com",
     projectId: "escuela-mendigorria",
-    storageBucket: "escuela-mendigorria.appspot.com",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    storageBucket: "escuela-mendigorria.firebasestorage.app",
+    messagingSenderId: "903158192678",
+    appId: "1:903158192678:web:91fae51bf1ebc14e87a4e7",
+    measurementId: "G-7JP600M7QG"
 };
 
 // Initialize Firebase
