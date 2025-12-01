@@ -1,152 +1,126 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import heroImg from '../assets/hero.png';
-import { BookOpen, Users, Coffee, Sun, ArrowRight } from 'lucide-react';
+import { BookOpen, Users, Coffee, Sun, ArrowRight, Star, Heart, Shield } from 'lucide-react';
 
 const Home = () => {
     const { t } = useLanguage();
 
-    const sections = [
+    const features = [
         {
             id: 'quienes-somos',
-            icon: <Users className="w-12 h-12" />,
+            icon: <Users className="w-8 h-8 text-blue-600" />,
             title: 'menu.about',
             desc: 'home.about_desc',
-            gradient: 'from-blue-500 to-blue-600',
-            bgGradient: 'bg-gradient-to-br from-blue-50 to-blue-100'
         },
         {
             id: 'colegio',
-            icon: <BookOpen className="w-12 h-12" />,
+            icon: <BookOpen className="w-8 h-8 text-blue-600" />,
             title: 'menu.school',
             desc: 'home.school_desc',
-            gradient: 'from-green-500 to-green-600',
-            bgGradient: 'bg-gradient-to-br from-green-50 to-green-100'
         },
         {
             id: 'familia',
-            icon: <Sun className="w-12 h-12" />,
+            icon: <Heart className="w-8 h-8 text-blue-600" />,
             title: 'menu.family',
             desc: 'home.family_desc',
-            gradient: 'from-amber-500 to-amber-600',
-            bgGradient: 'bg-gradient-to-br from-amber-50 to-amber-100'
         },
         {
-            id: 'colegio',
-            icon: <Sun className="w-12 h-12" />,
+            id: 'actividades',
+            icon: <Star className="w-8 h-8 text-blue-600" />,
             title: 'home.activities',
             desc: 'home.activities_desc',
-            gradient: 'from-orange-500 to-orange-600',
-            bgGradient: 'bg-gradient-to-br from-orange-50 to-orange-100'
         },
         {
-            id: 'colegio',
-            icon: <Coffee className="w-12 h-12" />,
+            id: 'comedor',
+            icon: <Coffee className="w-8 h-8 text-blue-600" />,
             title: 'home.dining',
             desc: 'home.dining_desc',
-            gradient: 'from-rose-500 to-rose-600',
-            bgGradient: 'bg-gradient-to-br from-rose-50 to-rose-100'
+        },
+        {
+            id: 'valores',
+            icon: <Shield className="w-8 h-8 text-blue-600" />,
+            title: 'Valores',
+            desc: 'Formación integral basada en el respeto y la excelencia.',
         },
     ];
 
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen flex flex-col">
             {/* Hero Section */}
-            <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white overflow-hidden">
-                {/* Background decorations */}
-                <div className="absolute inset-0 opacity-10">
-                    <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full mix-blend-overlay filter blur-3xl animate-pulse"></div>
-                    <div className="absolute bottom-0 right-0 w-96 h-96 bg-yellow-300 rounded-full mix-blend-overlay filter blur-3xl animate-pulse delay-700"></div>
-                </div>
+            <section className="relative bg-slate-900 text-white overflow-hidden">
+                <div className="absolute inset-0 bg-blue-900/20 z-0"></div>
+                <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-slate-50 to-transparent z-10"></div>
 
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 relative z-10">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 relative z-10">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        {/* Text Content */}
-                        <div className="text-center lg:text-left space-y-6">
-                            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
+                        <div className="space-y-8 animate-fade-in-up">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-300 text-sm font-medium">
+                                <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+                                Bienvenidos a la Escuela de Mendigorría
+                            </div>
+                            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
                                 {t('home.welcome')}
                             </h1>
-                            <p className="text-lg sm:text-xl lg:text-2xl text-blue-100 max-w-2xl mx-auto lg:mx-0">
+                            <p className="text-lg md:text-xl text-slate-300 max-w-xl leading-relaxed">
                                 {t('home.school_desc')}
                             </p>
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
-                                <a
-                                    href="/contacto"
-                                    className="inline-flex items-center justify-center gap-2 bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-8 py-4 rounded-full transition-all transform hover:scale-105 shadow-xl hover:shadow-2xl"
-                                >
+                            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                                <a href="/contacto" className="btn-primary">
                                     {t('menu.contact')}
-                                    <ArrowRight className="w-5 h-5" />
+                                    <ArrowRight className="ml-2 w-5 h-5" />
                                 </a>
-                                <a
-                                    href="/colegio"
-                                    className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-semibold px-8 py-4 rounded-full border-2 border-white/30 transition-all"
-                                >
+                                <a href="/colegio" className="btn-secondary bg-transparent text-white border-white/20 hover:bg-white/10 hover:border-white">
                                     Descubre más
                                 </a>
                             </div>
                         </div>
 
-                        {/* Hero Image */}
-                        <div className="relative">
-                            <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-pink-400 rounded-3xl blur-2xl opacity-20 transform rotate-6"></div>
-                            <img
-                                src={heroImg}
-                                alt="School"
-                                className="relative w-full h-auto rounded-3xl shadow-2xl transform hover:rotate-1 transition-transform duration-500"
-                            />
+                        <div className="relative lg:h-[600px] flex items-center justify-center animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                            <div className="relative w-full max-w-lg aspect-square lg:aspect-auto">
+                                <div className="absolute inset-0 bg-gradient-to-tr from-blue-600 to-purple-600 rounded-2xl rotate-3 opacity-20 blur-lg"></div>
+                                <img
+                                    src={heroImg}
+                                    alt="School Life"
+                                    className="relative rounded-2xl shadow-2xl w-full h-full object-cover border border-white/10"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                {/* Wave Divider */}
-                <div className="absolute bottom-0 left-0 right-0">
-                    <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 0L60 10C120 20 240 40 360 46.7C480 53 600 47 720 43.3C840 40 960 40 1080 46.7C1200 53 1320 67 1380 73.3L1440 80V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0V0Z" fill="#F5F7FA" />
-                    </svg>
-                </div>
             </section>
 
-            {/* Cards Section */}
-            <section className="py-20 bg-gray-50">
+            {/* Features Grid */}
+            <section className="py-24 bg-slate-50">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-                            Nuestra Comunidad Educativa
+                    <div className="text-center max-w-3xl mx-auto mb-16">
+                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                            Excelencia Educativa
                         </h2>
-                        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                            Descubre todo lo que la Escuela de Mendigorría tiene para ofrecer
+                        <p className="text-lg text-slate-600">
+                            Un entorno diseñado para potenciar el talento y la creatividad de cada estudiante.
                         </p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {sections.map((section, index) => (
+                        {features.map((feature, index) => (
                             <a
                                 key={index}
-                                href={`/${section.id}`}
-                                className={`group relative ${section.bgGradient} rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer overflow-hidden`}
+                                href={`/${feature.id}`}
+                                className="group bg-white p-8 rounded-2xl border border-slate-100 shadow-sm card-hover flex flex-col items-start"
                             >
-                                {/* Icon Background */}
-                                <div className="absolute top-0 right-0 w-32 h-32 opacity-10 transform translate-x-8 -translate-y-8">
-                                    <div className={`w-full h-full bg-gradient-to-br ${section.gradient} rounded-full`}></div>
+                                <div className="p-3 rounded-xl bg-blue-50 group-hover:bg-blue-600 transition-colors duration-300 mb-6">
+                                    {React.cloneElement(feature.icon, { className: "w-8 h-8 text-blue-600 group-hover:text-white transition-colors" })}
                                 </div>
-
-                                {/* Icon */}
-                                <div className={`relative inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br ${section.gradient} text-white rounded-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform`}>
-                                    {section.icon}
-                                </div>
-
-                                {/* Content */}
-                                <h3 className="text-2xl font-bold text-gray-800 mb-3 relative">
-                                    {t(section.title)}
+                                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">
+                                    {t(feature.title)}
                                 </h3>
-                                <p className="text-gray-600 mb-4 relative leading-relaxed">
-                                    {t(section.desc)}
+                                <p className="text-slate-600 leading-relaxed mb-6 flex-grow">
+                                    {t(feature.desc)}
                                 </p>
-
-                                {/* Arrow */}
-                                <div className="relative flex items-center text-blue-600 font-semibold group-hover:gap-2 transition-all">
-                                    <span>Leer más</span>
-                                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                <div className="flex items-center text-blue-600 font-semibold text-sm group-hover:gap-2 transition-all">
+                                    Leer más <ArrowRight className="ml-1 w-4 h-4" />
                                 </div>
                             </a>
                         ))}
@@ -155,21 +129,26 @@ const Home = () => {
             </section>
 
             {/* CTA Section */}
-            <section className="bg-gradient-to-r from-blue-600 to-indigo-700 py-20">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-                        ¿Listo para formar parte de nuestra familia?
-                    </h2>
-                    <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
-                        Contacta con nosotros y descubre cómo podemos ayudar en el desarrollo de tus hijos
-                    </p>
-                    <a
-                        href="/contacto"
-                        className="inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-300 text-blue-900 font-bold px-10 py-5 rounded-full text-lg transition-all transform hover:scale-105 shadow-xl hover:shadow-2xl"
-                    >
-                        Solicitar Información
-                        <ArrowRight className="w-6 h-6" />
-                    </a>
+            <section className="py-24 bg-white relative overflow-hidden">
+                <div className="container mx-auto px-4 relative z-10">
+                    <div className="bg-blue-600 rounded-3xl p-8 md:p-16 text-center text-white shadow-2xl relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-900/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+
+                        <h2 className="text-3xl md:text-5xl font-bold mb-6 relative z-10">
+                            ¿Listo para formar parte de nuestra familia?
+                        </h2>
+                        <p className="text-blue-100 text-lg md:text-xl mb-10 max-w-2xl mx-auto relative z-10">
+                            Abierto el plazo de matrícula. Ven a conocernos y descubre nuestro proyecto educativo.
+                        </p>
+                        <a
+                            href="/contacto"
+                            className="inline-flex items-center justify-center px-8 py-4 bg-white text-blue-600 font-bold rounded-full hover:bg-blue-50 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
+                        >
+                            Solicitar Información
+                            <ArrowRight className="ml-2 w-5 h-5" />
+                        </a>
+                    </div>
                 </div>
             </section>
         </div>
